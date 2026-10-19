@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+  /* Cores Institucionais e Botânicas - Contraste WCAG AA Validado */
+  --color-primary: #15803D;
+  --color-primary-hover: #166534;
+  --color-primary-light: #DCFCE7;
+  --color-secondary: #0F172A;
+  --color-accent: #B45309;
+  --color-accent-light: #FEF3C7;
+  --color-bg: #F8FAFC;
+  --color-surface: #FFFFFF;
+  --color-text: #0F172A;
+  --color-text-muted: #475569;
+  --color-border: #E2E8F0;
+
+  /* Tipografia */
+  --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Raios de Borda */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 18px;
+  --radius-full: 9999px;
+
+  /* Sombras */
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 12px 28px rgba(15, 23, 42, 0.12);
+
+  /* Transições */
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-body);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    font-size: 16px;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}

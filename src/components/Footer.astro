@@ -1,0 +1,90 @@
+---
+import Icon from './Icon.astro';
+
+const currentYear = new Date().getFullYear();
+const whatsappUrl = "https://wa.me/5527998688293?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20especialista%20da%20Emp%C3%B3rio%20Natural.";
+const instagramUrl = "https://www.instagram.com/emporionatural_oficial";
+---
+<footer class="bg-secondary text-white border-t border-border">
+  <div class="bg-primary py-14 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto text-center space-y-6">
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white">
+        Dê o primeiro passo para uma vida com mais energia e sem limitações.
+      </h2>
+      <p class="text-primary-light text-lg max-w-2xl mx-auto">
+        O cuidado que o seu corpo merece após os 35 anos, com a praticidade, pureza e rapidez de entrega no Espírito Santo que você precisa.
+      </p>
+      <div class="pt-2">
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-3 bg-accent-light hover:bg-white text-secondary font-extrabold text-lg px-8 min-h-[56px] rounded-full shadow-lg transition-colors"
+        >
+          <Icon name="whatsapp" size={24} class="text-primary" />
+          <span>QUERO FALAR COM UM ESPECIALISTA NO WHATSAPP</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-10 border-b border-white/15">
+      <div class="space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-white font-display font-bold text-lg">EN</div>
+          <div>
+            <span class="block font-display font-bold text-lg text-white leading-none">Empório Natural</span>
+            <span class="block text-xs text-white/75 mt-1">Essencial Prime • Suplementação Natural</span>
+          </div>
+        </div>
+        <p class="text-sm text-white/80 leading-relaxed">
+          Suplementos naturais selecionados de alta pureza (Cúrcuma, Magnésio, Ômega 3 e Colágeno) com logística dedicada para atender todo o estado do Espírito Santo.
+        </p>
+      </div>
+
+      <div class="space-y-3">
+        <h3 class="font-display font-bold text-base text-accent-light uppercase tracking-wider">Atendimento & Contato</h3>
+        <ul class="space-y-2.5 text-sm text-white/85">
+          <li>
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2.5 hover:text-accent-light transition-colors py-1">
+              <Icon name="phone" size={18} class="text-accent-light shrink-0" />
+              <span>WhatsApp: (27) 99868-8293</span>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:essencialprimeadm@gmail.com" class="inline-flex items-center gap-2.5 hover:text-accent-light transition-colors py-1">
+              <Icon name="mail" size={18} class="text-accent-light shrink-0" />
+              <span>essencialprimeadm@gmail.com</span>
+            </a>
+          </li>
+          <li>
+            <a href={instagramUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2.5 hover:text-accent-light transition-colors py-1">
+              <Icon name="instagram" size={18} class="text-accent-light shrink-0" />
+              <span>@emporionatural_oficial</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="space-y-3">
+        <h3 class="font-display font-bold text-base text-accent-light uppercase tracking-wider">Identificação Legal</h3>
+        <ul class="space-y-2 text-sm text-white/85">
+          <li class="font-semibold text-white">COMERCIO ESSENCIAL LTDA</li>
+          <li>Nome Fantasia: Essencial Prime / Empório Natural</li>
+          <li>CNPJ: 19.682.853/0001-26</li>
+          <li class="flex items-start gap-2 pt-1">
+            <Icon name="map-pin" size={18} class="text-accent-light shrink-0 mt-0.5" />
+            <span>Av. Dr. Mário Vello Silvares, 63, Centro — Pedro Canário - ES, CEP 29.970-000</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/70">
+      <p>© {currentYear} Empório Natural (Comercio Essencial LTDA). Todos os direitos reservados.</p>
+      <p class="text-center sm:text-right max-w-md">
+        Os suplementos alimentares não são medicamentos e não substituem uma alimentação equilibrada. Em caso de dúvidas específicas, consulte seu médico ou nutricionista.
+      </p>
+    </div>
+  </div>
+</footer>

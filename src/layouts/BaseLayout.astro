@@ -1,0 +1,76 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Empório Natural | Suplementos Puros e Saúde 35+ no ES",
+  description = "Suplementos 100% naturais para o público 35+ no Espírito Santo. Alivie dores e recupere a energia com Cúrcuma, Magnésio, Ômega 3 e Colágeno. Frete rápido!"
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+const schemaOrg = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Empório Natural - Essencial Prime",
+  "legalName": "COMERCIO ESSENCIAL LTDA",
+  "taxID": "19.682.853/0001-26",
+  "description": description,
+  "url": canonicalURL.toString(),
+  "telephone": "+55-27-99868-8293",
+  "email": "essencialprimeadm@gmail.com",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Av. Dr. Mário Vello Silvares, 63, Centro",
+    "addressLocality": "Pedro Canário",
+    "addressRegion": "ES",
+    "postalCode": "29970-000",
+    "addressCountry": "BR"
+  },
+  "areaServed": {
+    "@type": "State",
+    "name": "Espírito Santo"
+  },
+  "sameAs": [
+    "https://www.instagram.com/emporionatural_oficial"
+  ]
+};
+---
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="Empório Natural ES" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />
+  </head>
+  <body class="min-h-screen flex flex-col antialiased selection:bg-primary selection:text-white">
+    <slot />
+  </body>
+</html>

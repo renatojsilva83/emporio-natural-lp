@@ -1,0 +1,194 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Footer from '../components/Footer.astro';
+import Icon from '../components/Icon.astro';
+
+const phone = "5527998688293";
+const createWaLink = (msg: string) => `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+
+const dores = [
+  { icon: 'bolt' as const, title: 'Cansaço Constante', description: 'Aquela sensação de esgotamento físico e falta de energia que bate antes mesmo do dia terminar.' },
+  { icon: 'bone' as const, title: 'Desconforto nas Articulações', description: 'Rigidez ou dores chatas nos joelhos, costas e juntas ao acordar ou realizar movimentos simples.' },
+  { icon: 'heart' as const, title: 'Queda na Qualidade de Vida', description: 'Noites mal dormidas, tensão muscular e baixa disposição afetando sua rotina familiar e trabalho.' },
+  { icon: 'shield' as const, title: 'Prevenção 35+', description: 'A necessidade real de blindar o organismo e repor nutrientes essenciais que o corpo reduz após os 35 anos.' }
+];
+
+const produtos = [
+  { nome: 'Cúrcuma Pura', tag: 'Alívio Articular & Anti-inflamatório', corBarra: 'bg-[#B45309]', corFundoTag: 'bg-accent-light text-secondary', foco: 'Poderosa ação anti-inflamatória e antioxidante natural. Ideal para aliviar dores nas articulações, reduzir a rigidez matinal e devolver leveza aos seus movimentos.', beneficios: ['Auxilia no alívio de dores nas juntas', 'Ação antioxidante concentrada', 'Mais mobilidade no dia a dia'], ctaMsg: 'Olá! Gostaria de conhecer a Cúrcuma Pura da Empório Natural e saber valores e frete para minha cidade.' },
+  { nome: 'Magnésio Essencial', tag: 'Energia, Músculos & Descanso', corBarra: 'bg-[#15803D]', corFundoTag: 'bg-primary-light text-secondary', foco: 'Fundamental para o relaxamento muscular, funcionamento neuromuscular, produção de energia celular e combate ao esgotamento físico e mental diário.', beneficios: ['Reduz câimbras e tensões musculares', 'Melhora a disposição física', 'Contribui para um sono reparador'], ctaMsg: 'Olá! Gostaria de conhecer o Magnésio da Empório Natural e saber valores e frete para minha cidade.' },
+  { nome: 'Ômega 3 de Alta Qualidade', tag: 'Coração, Foco & Memória', corBarra: 'bg-[#0369A1]', corFundoTag: 'bg-sky-100 text-secondary', foco: 'Ácidos graxos essenciais (EPA e DHA) indispensáveis para a proteção cardiovascular, equilíbrio dos níveis saudáveis de colesterol, foco e clareza mental.', beneficios: ['Saúde do coração e circulação', 'Suporte à memória e concentração', 'Alta pureza livre de metais pesados'], ctaMsg: 'Olá! Gostaria de conhecer o Ômega 3 da Empório Natural e saber valores e frete para minha cidade.' },
+  { nome: 'Colágeno Especial', tag: 'Sustentação, Pele & Cartilagens', corBarra: 'bg-[#6D28D9]', corFundoTag: 'bg-purple-100 text-secondary', foco: 'Proteína estrutural chave para manter a firmeza e elasticidade da pele, além de fortalecer cartilagens, tendões, unhas e estrutura articular após os 35 anos.', beneficios: ['Integridade das cartilagens e juntas', 'Firmeza e elasticidade da pele', 'Reposição proteica de fácil absorção'], ctaMsg: 'Olá! Gostaria de conhecer o Colágeno da Empório Natural e saber valores e frete para minha cidade.' }
+];
+
+const diferenciaisES = [
+  { icon: 'truck' as const, title: 'Logística Próxima de Você no ES', description: 'Com sede física em Pedro Canário - ES, nossos envios para os municípios capixabas têm frete reduzido e chegam muito mais rápido que compras de marketplaces distantes.' },
+  { icon: 'shield' as const, title: 'Padrão de Pureza Natural', description: 'Trabalhamos exclusivamente com suplementos selecionados, seguros e transparentes, focados em entregar o melhor da natureza para nutrir o seu corpo.' },
+  { icon: 'whatsapp' as const, title: 'Atendimento Consultivo Humanizado', description: 'Ao contrário dos marketplaces genéricos, você fala direto com nossa equipe pelo WhatsApp para tirar dúvidas e escolher o suplemento certo para a sua necessidade.' }
+];
+
+const faqs = [
+  { pergunta: 'Esses produtos têm efeitos colaterais?', resposta: 'Não. Trabalhamos exclusivamente com suplementos alimentares 100% naturais (Cúrcuma, Magnésio, Ômega 3 e Colágeno), formulados para nutrir o organismo de forma preventiva, segura e saudável.' },
+  { pergunta: 'Como funciona o envio para o Espírito Santo?', resposta: 'Nossa empresa (Essencial Prime / Empório Natural) está sediada em Pedro Canário - ES. Por estarmos no próprio estado, conseguimos despachar rapidamente com prazos reduzidos e taxas de frete muito mais econômicas para toda a região capixaba.' },
+  { pergunta: 'Como sei qual suplemento é o ideal para o meu caso?', resposta: 'Basta clicar em qualquer botão de WhatsApp desta página. Nossa equipe de atendimento vai ouvir sua necessidade (seja alívio de desconfortos articulares, cansaço físico ou reposição 35+) e indicar a melhor opção ou kit.' },
+  { pergunta: 'Como devo consumir as cápsulas?', resposta: 'Todas as instruções de uso e recomendação diária constam de forma clara e legível nos rótulos originais de cada frasco, além do suporte direto da nossa equipe no pós-venda.' }
+];
+---
+
+<BaseLayout>
+  <Header />
+
+  <main>
+    <Hero />
+
+    <section id="beneficios" class="py-16 sm:py-20 bg-surface border-y border-border">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center space-y-4">
+          <span class="text-sm font-bold uppercase tracking-wider text-primary">Atenção aos sinais do corpo</span>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-secondary">Você tem sentido que o ritmo da sua rotina mudou?</h2>
+          <p class="text-text-muted text-lg">O cansaço acumulado, a falta de energia e aquelas pequenas dores que atrapalham o seu dia não precisam fazer parte da sua rotina após os 35 anos.</p>
+        </div>
+
+        <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {dores.map((item) => (
+            <article class="bg-bg rounded-xl p-6 border border-border shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+              <div class="space-y-4">
+                <div class="w-12 h-12 rounded-lg bg-primary-light text-primary flex items-center justify-center">
+                  <Icon name={item.icon} size={24} />
+                </div>
+                <h3 class="text-xl font-bold text-secondary">{item.title}</h3>
+                <p class="text-text-muted text-base leading-relaxed">{item.description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="suplementos" class="py-16 sm:py-24 bg-bg">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center space-y-4">
+          <span class="text-sm font-bold uppercase tracking-wider text-accent">Linha Essencial Prime</span>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-secondary">A suplementação certa para cada necessidade do seu corpo</h2>
+          <p class="text-text-muted text-lg">Trabalhamos exclusivamente com suplementos naturais selecionados para atuar na raiz do seu bem-estar e devolver sua vitalidade.</p>
+        </div>
+
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+          {produtos.map((prod) => (
+            <article class="bg-surface rounded-2xl border border-border shadow-sm hover:shadow-md transition-all overflow-hidden flex flex-col justify-between">
+              <div>
+                <div class={`h-2.5 w-full ${prod.corBarra}`} />
+                <div class="p-6 sm:p-8 space-y-5">
+                  <div class="flex flex-wrap items-center justify-between gap-2">
+                    <span class={`text-xs font-bold px-3 py-1 rounded-full ${prod.corFundoTag}`}>{prod.tag}</span>
+                    <span class="text-xs font-semibold text-text-muted">Público 35+</span>
+                  </div>
+                  <h3 class="text-2xl font-extrabold text-secondary">{prod.nome}</h3>
+                  <p class="text-text-muted text-base leading-relaxed">{prod.foco}</p>
+                  <ul class="space-y-2 pt-2 border-t border-border">
+                    {prod.beneficios.map((ben) => (
+                      <li class="flex items-center gap-2.5 text-sm font-medium text-secondary">
+                        <Icon name="check" size={18} class="text-primary shrink-0" />
+                        <span>{ben}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <div class="px-6 sm:px-8 pb-6 sm:pb-8 pt-2">
+                <a href={createWaLink(prod.ctaMsg)} target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-white font-bold text-base px-6 min-h-[48px] rounded-xl transition-colors shadow-sm">
+                  <Icon name="whatsapp" size={20} />
+                  <span>Quero Conhecer Este Produto</span>
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="vantagem-es" class="py-16 sm:py-20 bg-surface border-y border-border">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5 space-y-5">
+            <div class="inline-flex items-center gap-2 bg-primary-light text-primary px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
+              <Icon name="map-pin" size={16} />
+              <span>De Pedro Canário para todo o ES</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-secondary">Por que escolher a Empório Natural no Espírito Santo?</h2>
+            <p class="text-text-muted text-lg leading-relaxed">Ao comprar em marketplaces genéricos, você enfrenta fretes caros, demora na entrega e falta de orientação. Nós unimos suplementos de altíssima pureza com uma operação local capixaba.</p>
+            <div class="pt-2">
+              <a href={createWaLink("Olá! Moro no Espírito Santo e quero consultar o frete e condições dos suplementos.")} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-secondary hover:bg-secondary/90 text-white font-bold px-6 min-h-[50px] rounded-full transition-colors">
+                <Icon name="truck" size={20} class="text-accent-light" />
+                <span>Consultar Entrega para Minha Cidade</span>
+              </a>
+            </div>
+          </div>
+          <div class="lg:col-span-7 grid grid-cols-1 gap-6">
+            {diferenciaisES.map((dif) => (
+              <div class="bg-bg p-6 rounded-xl border border-border flex flex-col sm:flex-row items-start gap-4">
+                <div class="w-12 h-12 rounded-xl bg-primary text-white flex items-center justify-center shrink-0">
+                  <Icon name={dif.icon} size={24} />
+                </div>
+                <div class="space-y-1.5">
+                  <h3 class="text-xl font-bold text-secondary">{dif.title}</h3>
+                  <p class="text-text-muted text-base leading-relaxed">{dif.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 sm:py-20 bg-bg">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center space-y-3">
+          <span class="text-sm font-bold uppercase tracking-wider text-primary">Bem-estar comprovado na rotina</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-secondary">Quem cuida da saúde com a gente sente a diferença</h2>
+        </div>
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <blockquote class="bg-surface p-6 sm:p-8 rounded-2xl border border-border shadow-sm flex flex-col justify-between space-y-4">
+            <div class="flex items-center gap-1 text-accent" aria-label="Avaliação 5 de 5 estrelas">
+              <Icon name="star" size={18} /><Icon name="star" size={18} /><Icon name="star" size={18} /><Icon name="star" size={18} /><Icon name="star" size={18} />
+            </div>
+            <p class="text-secondary text-base italic leading-relaxed">“Depois dos 35, comecei a sentir muitas dores nos joelhos ao caminhar. A cúrcuma mudou minha rotina, voltei a ter disposição no dia a dia de forma natural!”</p>
+            <footer class="text-sm font-bold text-text-muted border-t border-border pt-3">Carla M., 41 anos — Cliente no Espírito Santo</footer>
+          </blockquote>
+          <blockquote class="bg-surface p-6 sm:p-8 rounded-2xl border border-border shadow-sm flex flex-col justify-between space-y-4">
+            <div class="flex items-center gap-1 text-accent" aria-label="Avaliação 5 de 5 estrelas">
+              <Icon name="star" size={18} /><Icon name="star" size={18} /><Icon name="star" size={18} /><Icon name="star" size={18} /><Icon name="star" size={18} />
+            </div>
+            <p class="text-secondary text-base italic leading-relaxed">“O atendimento pelo WhatsApp é excelente e o pedido chegou super rápido aqui no Espírito Santo. O magnésio ajudou demais naquele cansaço físico que eu sentia todas as tardes.”</p>
+            <footer class="text-sm font-bold text-text-muted border-t border-border pt-3">Marcos S., 45 anos — Cliente no Espírito Santo</footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="py-16 sm:py-20 bg-surface border-t border-border">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center space-y-3 mb-10">
+          <span class="text-sm font-bold uppercase tracking-wider text-primary">Tire suas dúvidas</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-secondary">Perguntas Frequentes</h2>
+        </div>
+        <div class="space-y-4">
+          {faqs.map((item) => (
+            <details class="group bg-bg rounded-xl border border-border overflow-hidden">
+              <summary class="flex items-center justify-between gap-4 p-5 sm:p-6 font-display font-bold text-lg text-secondary cursor-pointer select-none hover:bg-border/30 transition-colors min-h-[56px]">
+                <span>{item.pergunta}</span>
+                <Icon name="chevron" size={20} class="text-primary shrink-0 transition-transform duration-200 group-open:rotate-180" />
+              </summary>
+              <div class="px-5 sm:px-6 pb-6 pt-1 text-text-muted text-base leading-relaxed border-t border-border/60">
+                {item.resposta}
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

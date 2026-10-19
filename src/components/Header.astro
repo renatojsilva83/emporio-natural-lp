@@ -1,0 +1,77 @@
+---
+import Icon from './Icon.astro';
+
+const whatsappUrl = "https://wa.me/5527998688293?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Emp%C3%B3rio%20Natural%20e%20gostaria%20de%20orienta%C3%A7%C3%A3o%20sobre%20os%20suplementos.";
+---
+<header class="sticky top-0 z-50 bg-surface/95 backdrop-blur-md border-b border-border shadow-sm">
+  <div class="bg-secondary text-white text-sm py-2 px-4">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-center sm:justify-between gap-2 text-center">
+      <p class="flex items-center justify-center gap-2 font-medium">
+        <Icon name="truck" size={18} class="text-accent-light shrink-0" />
+        <span>Frete Rápido e Condições Especiais para todo o <strong>Espírito Santo</strong>!</span>
+      </p>
+      <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-1.5 text-accent-light hover:underline font-semibold">
+        <span>Dúvidas? Fale com um especialista: (27) 99868-8293</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-3 group focus:outline-none">
+      <div class="w-11 h-11 rounded-lg bg-primary flex items-center justify-center text-white font-display font-bold text-xl shadow-sm group-hover:bg-primary-hover transition-colors">
+        EN
+      </div>
+      <div>
+        <span class="block font-display font-bold text-lg text-secondary leading-none">Empório Natural</span>
+        <span class="block text-xs text-text-muted font-medium mt-1">Essencial Prime • Saúde 35+</span>
+      </div>
+    </a>
+
+    <nav aria-label="Navegação Principal" class="hidden md:flex items-center gap-8 text-base font-medium text-text-muted">
+      <a href="#beneficios" class="hover:text-primary transition-colors py-2">Por que 35+?</a>
+      <a href="#suplementos" class="hover:text-primary transition-colors py-2">Suplementos</a>
+      <a href="#vantagem-es" class="hover:text-primary transition-colors py-2">Entrega no ES</a>
+      <a href="#faq" class="hover:text-primary transition-colors py-2">Dúvidas</a>
+    </nav>
+
+    <div class="hidden md:flex items-center">
+      <a
+        href={whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-white font-semibold px-5 min-h-[48px] rounded-full shadow-sm transition-colors"
+      >
+        <Icon name="whatsapp" size={20} />
+        <span>Atendimento WhatsApp</span>
+      </a>
+    </div>
+
+    <details class="md:hidden relative group">
+      <summary
+        aria-label="Abrir menu de navegação"
+        class="list-none flex items-center justify-center w-12 h-12 rounded-md border border-border text-secondary hover:bg-bg cursor-pointer"
+      >
+        <Icon name="menu" size={24} />
+      </summary>
+      <nav
+        aria-label="Navegação Mobile"
+        class="absolute right-0 mt-3 w-72 bg-surface rounded-lg shadow-lg border border-border p-4 flex flex-col gap-2"
+      >
+        <a href="#beneficios" class="px-4 py-3 rounded-md font-medium text-secondary hover:bg-primary-light/50">Por que suplementar 35+?</a>
+        <a href="#suplementos" class="px-4 py-3 rounded-md font-medium text-secondary hover:bg-primary-light/50">Nossos Suplementos</a>
+        <a href="#vantagem-es" class="px-4 py-3 rounded-md font-medium text-secondary hover:bg-primary-light/50">Envio Rápido no ES</a>
+        <a href="#faq" class="px-4 py-3 rounded-md font-medium text-secondary hover:bg-primary-light/50">Dúvidas Frequentes</a>
+        <hr class="border-border my-1" />
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center justify-center gap-2 bg-primary text-white font-semibold px-4 min-h-[48px] rounded-md text-center"
+        >
+          <Icon name="whatsapp" size={20} />
+          <span>Falar no WhatsApp</span>
+        </a>
+      </nav>
+    </details>
+  </div>
+</header>
