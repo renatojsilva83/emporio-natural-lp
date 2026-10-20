@@ -89,3 +89,9 @@ Os JPEGs não utilizados foram removidos do bundle público para reduzir o peso 
 - `public/sitemap.xml`
 - `public/llms.txt`
 - `public/_headers`
+
+## Revisão de copy solicitada — V2.1
+
+Após a primeira revisão visual, a copy foi ajustada para recuperar a essência da V1 sem voltar às promessas médicas ou aos depoimentos não comprovados. O hero voltou a falar sobre cuidado depois dos 35, cansaço, disposição e diferentes necessidades da rotina. Foi criada a seção “Você tem sentido que o ritmo da sua rotina mudou?”, com temas de cansaço, músculos, descanso, mobilidade, articulações, alimentação, foco, pele e aporte proteico.
+
+Os cards agora explicam por que cada destaque costuma ser procurado: Cúrcuma para mobilidade e rotina articular; Magnésio para energia, músculos e descanso; Ômega 3 para alimentação e autocuidado; e Colágeno para pele, unhas e aporte proteico. A redação informa que composição, dose, marca, apresentação e disponibilidade devem ser conferidas no rótulo e com a equipe.

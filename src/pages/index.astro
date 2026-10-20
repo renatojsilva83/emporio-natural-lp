@@ -5,7 +5,7 @@ import Hero from '../components/Hero.astro';
 import Footer from '../components/Footer.astro';
 import Icon from '../components/Icon.astro';
 import { business, deliveryWhatsappLink, generalWhatsappLink, productWhatsappLink } from '../data/business';
-import { categories, faqs, featuredProducts } from '../data/catalog';
+import { categories, faqs, featuredProducts, needs } from '../data/catalog';
 
 const toneClasses: Record<string, string> = {
   amber: 'bg-amber-50 text-amber-900 border-amber-100',
@@ -20,6 +20,32 @@ const toneClasses: Record<string, string> = {
 
   <main id="main-content">
     <Hero />
+
+    <section id="necessidades" class="border-b border-border bg-surface py-16 sm:py-20" aria-labelledby="necessidades-title">
+      <div class="page-shell">
+        <div class="mx-auto max-w-3xl space-y-4 text-center">
+          <p class="section-label">Atenção aos sinais do corpo</p>
+          <h2 id="necessidades-title" class="section-title mx-auto text-balance">Você tem sentido que o ritmo da sua rotina mudou?</h2>
+          <p class="text-lg leading-relaxed text-text-muted">Cansaço acumulado, falta de disposição, tensão muscular, noites mal dormidas ou aquela vontade de cuidar melhor da alimentação podem fazer você procurar novas opções de suplementação.</p>
+        </div>
+
+        <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {needs.map((need, index) => (
+            <article class="rounded-2xl border border-border bg-background p-5 shadow-soft transition-all duration-200 hover:-translate-y-1 hover:shadow-card">
+              <div class="flex items-center justify-between gap-3">
+                <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-primary-soft text-primary"><Icon name={need.icon} size={22} /></span>
+                <span class="text-xs font-extrabold text-text-muted">0{index + 1}</span>
+              </div>
+              <h3 class="mt-5 text-xl font-bold text-text">{need.title}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-text-muted">{need.description}</p>
+              <p class="mt-4 border-t border-border pt-3 text-xs font-extrabold uppercase tracking-[0.08em] text-primary">{need.product}</p>
+            </article>
+          ))}
+        </div>
+
+        <p class="mx-auto mt-7 max-w-3xl text-center text-xs font-semibold leading-relaxed text-text-muted">A necessidade varia de pessoa para pessoa. Os produtos não substituem alimentação equilibrada, medicamentos ou orientação de profissional de saúde.</p>
+      </div>
+    </section>
 
     <section id="categorias" class="bg-surface py-16 sm:py-20" aria-labelledby="categorias-title">
       <div class="page-shell">
@@ -54,9 +80,9 @@ const toneClasses: Record<string, string> = {
       <div class="page-shell">
         <div class="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <div class="max-w-2xl space-y-4">
-            <p class="section-label">Uma seleção para você conhecer</p>
-            <h2 id="destaques-title" class="section-title text-balance">Alguns produtos em destaque</h2>
-            <p class="text-lg leading-relaxed text-text-muted">Consulte marcas, apresentações, preços, disponibilidade e condições de entrega para sua cidade.</p>
+            <p class="section-label">Suplementação para diferentes necessidades</p>
+            <h2 id="destaques-title" class="section-title text-balance">A suplementação certa para cada rotina</h2>
+            <p class="text-lg leading-relaxed text-text-muted">Conheça a finalidade de cada destaque e consulte a composição, a apresentação, o preço e a disponibilidade antes de escolher.</p>
           </div>
           <a href={generalWhatsappLink()} target="_blank" rel="noopener noreferrer" class="button button--secondary shrink-0" data-cta="whatsapp-catalog" data-channel="whatsapp">
             <Icon name="search" size={18} /> Consultar outros produtos
@@ -78,6 +104,11 @@ const toneClasses: Record<string, string> = {
                       <h3 class="text-2xl font-bold text-text">{product.name}</h3>
                       <p class="mt-3 text-base leading-relaxed text-text-muted">{product.description}</p>
                     </div>
+                    <ul class="space-y-2 border-t border-border pt-4">
+                      {product.keyPoints.map((point) => (
+                        <li class="flex items-start gap-2 text-sm font-semibold text-text"><Icon name="check" size={17} class="mt-0.5 shrink-0 text-primary" /><span>{point}</span></li>
+                      ))}
+                    </ul>
                     <div class="flex items-start gap-2 rounded-xl bg-background px-3 py-3 text-sm font-semibold text-text-muted">
                       <Icon name="message" size={18} class="mt-0.5 shrink-0 text-primary" />
                       <span>Consulte a marca, o preço e a entrega para sua cidade.</span>
