@@ -24,6 +24,14 @@ A V2 é uma landing page Astro para a Empório Natural, com foco em atendimento 
 - Cards e espaçamentos compactados para reduzir a fadiga de rolagem.
 - Barra fixa de WhatsApp adicionada no mobile, com respeito à safe area.
 
+## Configuração híbrida mobile
+
+- Os quatro produtos principais permanecem empilhados no mobile para facilitar descoberta, comparação e consulta individual.
+- Combinações, necessidades, categorias, condições de entrega e etapas de compra usam carrosséis somente no mobile.
+- Os carrosséis possuem swipe, contador “1 de N” e controles acessíveis de 44 px.
+- O desktop permanece em grid, sem controles de carrossel.
+- A composição foi validada em viewport mobile de 390 × 844 px sem overflow horizontal.
+
 ## Compra
 
 A compra acontece com atendimento humano. O visitante escolhe um destaque ou combinação, envia produto e cidade/CEP pelo WhatsApp e consulta disponibilidade, preço, prazo, frete e pagamento antes de confirmar.

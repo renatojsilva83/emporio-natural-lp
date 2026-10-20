@@ -114,3 +114,13 @@ Os cards agora explicam por que cada destaque costuma ser procurado: Cúrcuma pa
 - Cards e espaçamentos foram compactados no mobile sem remover a vitrine ou os dados essenciais.
 - Adicionada barra fixa inferior de WhatsApp no mobile, respeitando safe area e sem aparecer no desktop.
 - Menu mobile passou a priorizar “Falar com a equipe” antes do Instagram.
+
+## Atualização aplicada — V2.3 configuração híbrida mobile
+
+- Os quatro produtos principais permanecem empilhados verticalmente no mobile, preservando descoberta, comparação e CTAs individuais.
+- Combinações, necessidades, categorias, condições de entrega e etapas de compra passaram a usar carrosséis somente no mobile.
+- Cada carrossel possui swipe nativo, snap horizontal, contador “1 de N”, controles anterior/próximo e alvos de toque de 44 px.
+- Os controles ficam ocultos no desktop, que continua em grid.
+- QA mobile em 390 × 844 px: 12.292 px de altura, quatro CTAs de produto acessíveis e zero overflow horizontal.
+- QA desktop em 1.440 px: controles ocultos e grid original preservado.
+A V2 foi implementada no projeto Astro existente, compilada com sucesso, revisada visualmente em desktop e mobile e publicada no Cloudflare Pages. A configuração híbrida mobile foi aplicada no commit de release correspondente, mantendo os quatro produtos principais empilhados e usando carrosséis apenas nas seções secundárias.
