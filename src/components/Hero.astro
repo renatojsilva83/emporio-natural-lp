@@ -3,26 +3,26 @@ import Icon from './Icon.astro';
 import { business, generalWhatsappLink } from '../data/business';
 import { featuredProducts } from '../data/catalog';
 ---
-<section id="inicio" class="relative overflow-hidden border-b border-border bg-background">
+<section id="inicio" class="order-1 relative overflow-hidden border-b border-border bg-background">
   <div class="absolute inset-0 -z-0 soft-grid opacity-70" aria-hidden="true"></div>
-  <div class="page-shell relative z-10 grid items-center gap-12 py-12 sm:py-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:py-24">
+  <div class="page-shell relative z-10 grid items-center gap-10 py-10 sm:gap-12 sm:py-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:py-24">
     <div class="space-y-7">
       <p class="eyebrow"><Icon name="sparkle" size={16} /> Atenção aos sinais do corpo • Cuidado 35+</p>
       <div class="space-y-5">
         <h1 class="text-balance max-w-3xl text-4xl font-bold tracking-tight text-text sm:text-5xl lg:text-[4.35rem]">
-          Depois dos 35, o corpo pede mais cuidado. Encontre o suplemento para a <span class="text-primary">sua rotina</span>
+          Suplementos para diferentes rotinas. <span class="text-primary">Consulte marcas, preço e entrega.</span>
         </h1>
         <p class="max-w-2xl text-lg leading-relaxed text-text-muted sm:text-xl">
-          Cúrcuma, Magnésio, Ômega 3 e Colágeno para diferentes necessidades: disposição, músculos, descanso, mobilidade, alimentação e cuidado com a pele. Compare opções com atendimento humano.
+          Cúrcuma, Magnésio, Ômega 3 e Colágeno em destaque. Compare opções com atendimento humano e confirme composição, disponibilidade, prazo e frete para sua cidade.
         </p>
       </div>
 
       <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
         <a href={generalWhatsappLink()} target="_blank" rel="noopener noreferrer" class="button button--primary min-h-14 px-6 text-base sm:text-lg" data-cta="whatsapp-hero" data-channel="whatsapp">
           <Icon name="whatsapp" size={21} />
-          Encontrar meu suplemento
+          Consultar opções no WhatsApp
         </a>
-        <a href={business.instagramUrl} target="_blank" rel="noopener noreferrer" class="button button--secondary min-h-14 px-6 text-base" data-cta="instagram-hero" data-channel="instagram">
+        <a href={business.instagramUrl} target="_blank" rel="noopener noreferrer" class="inline-flex min-h-11 items-center justify-center gap-2 px-3 text-sm font-bold text-primary transition-colors hover:text-primary-deep hover:underline" data-cta="instagram-hero" data-channel="instagram">
           <Icon name="instagram" size={19} />
           Ver novidades no Instagram
         </a>

@@ -15,6 +15,15 @@ A V2 é uma landing page Astro para a Empório Natural, com foco em atendimento 
 - Configurada imagem real de produto para compartilhamento social.
 - Nenhum depoimento fictício ou placeholder de prova social foi adicionado.
 
+## Atualização mobile e conversão
+
+- Hero com promessa mais concreta de consulta de marcas, preço e entrega.
+- CTA principal “Consultar opções no WhatsApp”; Instagram mantido como ação secundária.
+- Mensagem geral do WhatsApp solicita produto/categoria e cidade/CEP.
+- Produtos e combinações aparecem antes das seções editoriais no mobile.
+- Cards e espaçamentos compactados para reduzir a fadiga de rolagem.
+- Barra fixa de WhatsApp adicionada no mobile, com respeito à safe area.
+
 ## Compra
 
 A compra acontece com atendimento humano. O visitante escolhe um destaque ou combinação, envia produto e cidade/CEP pelo WhatsApp e consulta disponibilidade, preço, prazo, frete e pagamento antes de confirmar.

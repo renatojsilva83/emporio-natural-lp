@@ -104,3 +104,13 @@ Os cards agora explicam por que cada destaque costuma ser procurado: Cúrcuma pa
 - Mantidos os links contextuais de WhatsApp e acrescentado um gerador específico para combinações.
 - Configurada imagem real de produto para Open Graph e Twitter Card.
 - Mantidos dados legais, e-mail, Instagram, FAQ factual e ausência de depoimentos fictícios.
+
+## Atualização aplicada — V2.2 mobile e conversão
+
+- Hero reescrito para uma promessa operacional mais clara: consulta de marcas, preço e entrega.
+- CTA principal alterado para “Consultar opções no WhatsApp”; Instagram passou a ser ação secundária.
+- Mensagem geral do WhatsApp passou a solicitar produto/categoria e cidade/CEP para qualificar a conversa.
+- No mobile, a vitrine de produtos e as combinações aparecem antes das seções editoriais de necessidades e categorias.
+- Cards e espaçamentos foram compactados no mobile sem remover a vitrine ou os dados essenciais.
+- Adicionada barra fixa inferior de WhatsApp no mobile, respeitando safe area e sem aparecer no desktop.
+- Menu mobile passou a priorizar “Falar com a equipe” antes do Instagram.

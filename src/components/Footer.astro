@@ -3,7 +3,12 @@ import Icon from './Icon.astro';
 import { business, generalWhatsappLink } from '../data/business';
 const currentYear = new Date().getFullYear();
 ---
-<footer class="bg-dark text-white">
+<a href={generalWhatsappLink()} target="_blank" rel="noopener noreferrer" class="mobile-whatsapp-bar lg:hidden" data-cta="whatsapp-mobile-sticky" data-channel="whatsapp">
+  <Icon name="whatsapp" size={20} />
+  <span>Consultar opções no WhatsApp</span>
+</a>
+
+<footer class="bg-dark pb-20 text-white lg:pb-0">
   <section class="border-b border-white/10 bg-primary-deep">
     <div class="page-shell grid gap-8 py-14 lg:grid-cols-[1fr_auto] lg:items-center">
       <div class="max-w-2xl space-y-3">

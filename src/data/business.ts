@@ -25,7 +25,7 @@ export const whatsappLink = (message: string) =>
 
 export const generalWhatsappLink = () =>
   whatsappLink(
-    'Olá! Vim pelo site da Empório Natural e quero conhecer os produtos disponíveis, marcas, preços e condições de entrega para minha cidade.'
+    'Olá! Vim pelo site da Empório Natural e quero consultar opções. Produto ou categoria: [PRODUTO]. Minha cidade/CEP: [CIDADE/CEP]. Gostaria de saber marcas disponíveis, preço, prazo e frete.'
   );
 
 export const deliveryWhatsappLink = () =>

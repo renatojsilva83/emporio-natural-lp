@@ -44,6 +44,10 @@
     scroll-behavior: smooth;
   }
 
+  main section {
+    scroll-margin-top: 7rem;
+  }
+
   body {
     min-width: 320px;
     overflow-x: hidden;
@@ -151,6 +155,36 @@
 
   .button--dark:hover {
     background: var(--color-primary-deep);
+  }
+
+  .mobile-whatsapp-bar {
+    position: fixed;
+    right: 1rem;
+    bottom: max(0.75rem, env(safe-area-inset-bottom));
+    left: 1rem;
+    z-index: 60;
+    display: inline-flex;
+    min-height: 3.25rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    border-radius: var(--radius-pill);
+    padding: 0.85rem 1rem;
+    color: white;
+    background: var(--color-primary);
+    box-shadow: 0 12px 28px rgb(4 78 59 / 0.28);
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 800;
+    line-height: 1.2;
+    text-align: center;
+    transition: background-color var(--duration-base) ease, transform var(--duration-base) ease;
+  }
+
+  .mobile-whatsapp-bar:hover {
+    color: white;
+    background: var(--color-primary-hover);
+    transform: translateY(-2px);
   }
 
   .skip-link {

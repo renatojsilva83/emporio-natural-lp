@@ -80,11 +80,11 @@ import { business, generalWhatsappLink } from '../data/business';
           <a href="#entrega" class="rounded-xl px-4 py-3 hover:bg-primary-soft">Entrega</a>
           <a href="#como-comprar" class="rounded-xl px-4 py-3 hover:bg-primary-soft">Como comprar</a>
           <a href="#duvidas" class="rounded-xl px-4 py-3 hover:bg-primary-soft">Dúvidas</a>
-          <a href={business.instagramUrl} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 rounded-xl px-4 py-3 text-primary hover:bg-primary-soft" data-cta="instagram-mobile" data-channel="instagram">
-            <Icon name="instagram" size={18} /> Instagram oficial
-          </a>
           <a href={generalWhatsappLink()} target="_blank" rel="noopener noreferrer" class="button button--primary mt-2" data-cta="whatsapp-mobile" data-channel="whatsapp">
             <Icon name="whatsapp" size={18} /> Falar com a equipe
+          </a>
+          <a href={business.instagramUrl} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 rounded-xl px-4 py-3 text-primary hover:bg-primary-soft" data-cta="instagram-mobile" data-channel="instagram">
+            <Icon name="instagram" size={18} /> Instagram oficial
           </a>
         </nav>
       </div>
