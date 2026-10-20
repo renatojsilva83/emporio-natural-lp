@@ -4,8 +4,8 @@ import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
 import Footer from '../components/Footer.astro';
 import Icon from '../components/Icon.astro';
-import { business, deliveryWhatsappLink, generalWhatsappLink, productWhatsappLink } from '../data/business';
-import { categories, faqs, featuredProducts, needs } from '../data/catalog';
+import { business, deliveryWhatsappLink, generalWhatsappLink, kitWhatsappLink, productWhatsappLink } from '../data/business';
+import { categories, faqs, featuredProducts, kits, needs } from '../data/catalog';
 
 const toneClasses: Record<string, string> = {
   amber: 'bg-amber-50 text-amber-900 border-amber-100',
@@ -133,6 +133,34 @@ const toneClasses: Record<string, string> = {
       </div>
     </section>
 
+    <section id="combinacoes" class="border-b border-border bg-surface py-16 sm:py-20" aria-labelledby="combinacoes-title">
+      <div class="page-shell">
+        <div class="mx-auto max-w-3xl space-y-4 text-center">
+          <p class="section-label">Pedidos com mais de um produto</p>
+          <h2 id="combinacoes-title" class="section-title mx-auto text-balance">Compare combinações para a sua rotina</h2>
+          <p class="text-lg leading-relaxed text-text-muted">As combinações abaixo são sugestões comerciais para facilitar a consulta de mais de um produto no mesmo pedido. Elas não substituem orientação profissional.</p>
+        </div>
+
+        <div class="mx-auto mt-10 grid max-w-5xl gap-5 md:grid-cols-2">
+          {kits.map((kit) => (
+            <article class="flex flex-col justify-between rounded-2xl border border-border bg-background p-6 shadow-soft transition-all duration-200 hover:-translate-y-1 hover:shadow-card">
+              <div>
+                <div class="flex items-start justify-between gap-4">
+                  <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-primary-soft text-primary"><Icon name={kit.icon} size={22} /></span>
+                  <span class="rounded-full border border-accent/20 bg-accent-soft px-3 py-1 text-xs font-extrabold text-accent-deep">{kit.composition}</span>
+                </div>
+                <h3 class="mt-5 text-xl font-bold text-text">{kit.name}</h3>
+                <p class="mt-2 text-sm leading-relaxed text-text-muted">{kit.description}</p>
+              </div>
+              <a href={kitWhatsappLink(kit.name, kit.composition)} target="_blank" rel="noopener noreferrer" class="mt-6 inline-flex min-h-11 items-center gap-2 font-bold text-primary transition-colors hover:text-primary-deep" data-cta="whatsapp-kit" data-channel="whatsapp" data-kit={kit.name}>
+                <Icon name="whatsapp" size={18} /> Consultar esta combinação
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
     <section id="entrega" class="relative overflow-hidden bg-dark py-16 text-white sm:py-24" aria-labelledby="entrega-title">
       <div class="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-primary/30 blur-3xl" aria-hidden="true"></div>
       <div class="absolute -bottom-24 -left-20 h-64 w-64 rounded-full bg-accent/15 blur-3xl" aria-hidden="true"></div>
@@ -141,7 +169,7 @@ const toneClasses: Record<string, string> = {
           <p class="eyebrow text-accent"><Icon name="truck" size={16} /> Logística sem promessa exagerada</p>
           <h2 id="entrega-title" class="text-balance text-3xl font-bold sm:text-4xl lg:text-5xl">Consulte a melhor condição de entrega para sua cidade</h2>
           <p class="max-w-xl text-lg leading-relaxed text-white/72">Nosso foco inicial é atender clientes do Espírito Santo com agilidade e condições competitivas de frete. Envie sua cidade ou CEP pelo WhatsApp para consultar a disponibilidade do produto, o prazo e o valor da entrega.</p>
-          <p class="text-sm font-semibold leading-relaxed text-white/55">Atendimento local a partir de {business.city}/{business.state}. Outras regiões do Brasil podem ser avaliadas conforme produto, disponibilidade, modalidade e cotação.</p>
+          <p class="text-sm font-semibold leading-relaxed text-white/55">Atendimento local a partir de {business.city}/{business.state}. Consulte condições para {business.serviceAreas.join(', ')} e outras cidades do Espírito Santo. Outras regiões do Brasil podem ser avaliadas conforme produto, disponibilidade, modalidade e cotação.</p>
           <a href={deliveryWhatsappLink()} target="_blank" rel="noopener noreferrer" class="button bg-accent text-dark shadow-lg hover:bg-amber-300" data-cta="whatsapp-delivery" data-channel="whatsapp">
             <Icon name="map-pin" size={19} /> Consultar minha entrega
           </a>

@@ -95,3 +95,12 @@ Os JPEGs não utilizados foram removidos do bundle público para reduzir o peso 
 Após a primeira revisão visual, a copy foi ajustada para recuperar a essência da V1 sem voltar às promessas médicas ou aos depoimentos não comprovados. O hero voltou a falar sobre cuidado depois dos 35, cansaço, disposição e diferentes necessidades da rotina. Foi criada a seção “Você tem sentido que o ritmo da sua rotina mudou?”, com temas de cansaço, músculos, descanso, mobilidade, articulações, alimentação, foco, pele e aporte proteico.
 
 Os cards agora explicam por que cada destaque costuma ser procurado: Cúrcuma para mobilidade e rotina articular; Magnésio para energia, músculos e descanso; Ômega 3 para alimentação e autocuidado; e Colágeno para pele, unhas e aporte proteico. A redação informa que composição, dose, marca, apresentação e disponibilidade devem ser conferidas no rótulo e com a equipe.
+
+## Atualização aplicada — V2.1.1
+
+- Adicionada uma seção de combinações comerciais para consulta de mais de um produto no mesmo pedido.
+- Removida linguagem de tratamento, sinergia clínica ou resultado implícito das combinações.
+- Adicionadas áreas de atendimento consultivo para Vitória, Vila Velha, Serra, Cariacica, Linhares, Guarapari e outras cidades do Espírito Santo.
+- Mantidos os links contextuais de WhatsApp e acrescentado um gerador específico para combinações.
+- Configurada imagem real de produto para Open Graph e Twitter Card.
+- Mantidos dados legais, e-mail, Instagram, FAQ factual e ausência de depoimentos fictícios.

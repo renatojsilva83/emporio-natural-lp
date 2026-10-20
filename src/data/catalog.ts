@@ -111,6 +111,23 @@ export const featuredProducts = [
   }
 ];
 
+export const kits = [
+  {
+    name: 'Combinação Mobilidade e Rotina',
+    composition: 'Cúrcuma + Colágeno',
+    description:
+      'Uma combinação de categorias para quem quer comparar opções relacionadas a mobilidade, articulações, pele e aporte proteico. Consulte composição, marca e disponibilidade de cada item.',
+    icon: 'layers' as IconName
+  },
+  {
+    name: 'Combinação Energia e Autocuidado',
+    composition: 'Magnésio + Ômega 3',
+    description:
+      'Uma combinação de categorias para diferentes rotinas de energia, alimentação e autocuidado. Consulte apresentações, concentrações e condições para o pedido completo.',
+    icon: 'package' as IconName
+  }
+];
+
 export const faqs = [
   {
     question: 'Vocês vendem apenas os produtos em destaque?',

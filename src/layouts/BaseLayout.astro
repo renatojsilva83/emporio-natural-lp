@@ -14,7 +14,7 @@ const {
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, business.canonicalUrl).toString();
-const ogImageURL = `${business.canonicalUrl}${business.ogImagePath}`;
+const ogImageURL = new URL(business.ogImagePath, business.canonicalUrl).toString();
 
 const organization = {
   '@type': 'OnlineStore',

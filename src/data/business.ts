@@ -13,10 +13,11 @@ export const business = {
   city: 'Pedro Canário',
   state: 'ES',
   postalCode: '29970-000',
+  serviceAreas: ['Vitória', 'Vila Velha', 'Serra', 'Cariacica', 'Linhares', 'Guarapari'],
   streetAddress: 'Av. Dr. Mário Vello Silvares, 63, Centro',
   country: 'BR',
   logoPath: '',
-  ogImagePath: ''
+  ogImagePath: '/images/products/omega-3.webp'
 } as const;
 
 export const whatsappLink = (message: string) =>
@@ -35,6 +36,11 @@ export const deliveryWhatsappLink = () =>
 export const productWhatsappLink = (productName: string) =>
   whatsappLink(
     `Olá! Vim pelo site da Empório Natural e quero consultar o produto ${productName}. Pode me informar marcas disponíveis, preço, prazo e valor da entrega para minha cidade?`
+  );
+
+export const kitWhatsappLink = (kitName: string, composition: string) =>
+  whatsappLink(
+    `Olá! Vim pelo site da Empório Natural e quero consultar a combinação ${kitName} (${composition}). Pode me informar disponibilidade, marcas, preço e condição de entrega para minha cidade?`
   );
 
 export const instagramMessageUrl =
