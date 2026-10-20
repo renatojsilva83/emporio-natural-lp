@@ -4,185 +4,191 @@ import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
 import Footer from '../components/Footer.astro';
 import Icon from '../components/Icon.astro';
+import { business, deliveryWhatsappLink, generalWhatsappLink, productWhatsappLink } from '../data/business';
+import { categories, faqs, featuredProducts } from '../data/catalog';
 
-const phone = "5527998688293";
-const createWaLink = (msg: string) => `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-
-const dores = [
-  { icon: 'bolt' as const, title: 'Cansaço Constante', description: 'Aquela sensação de esgotamento físico e falta de energia que bate antes mesmo do dia terminar.' },
-  { icon: 'bone' as const, title: 'Desconforto nas Articulações', description: 'Rigidez ou dores chatas nos joelhos, costas e juntas ao acordar ou realizar movimentos simples.' },
-  { icon: 'heart' as const, title: 'Queda na Qualidade de Vida', description: 'Noites mal dormidas, tensão muscular e baixa disposição afetando sua rotina familiar e trabalho.' },
-  { icon: 'shield' as const, title: 'Prevenção 35+', description: 'A necessidade real de blindar o organismo e repor nutrientes essenciais que o corpo reduz após os 35 anos.' }
-];
-
-const produtos = [
-  { nome: 'Cúrcuma Pura', tag: 'Alívio Articular & Anti-inflamatório', corBarra: 'bg-[#B45309]', corFundoTag: 'bg-accent-light text-secondary', foco: 'Poderosa ação anti-inflamatória e antioxidante natural. Ideal para aliviar dores nas articulações, reduzir a rigidez matinal e devolver leveza aos seus movimentos.', beneficios: ['Auxilia no alívio de dores nas juntas', 'Ação antioxidante concentrada', 'Mais mobilidade no dia a dia'], ctaMsg: 'Olá! Gostaria de conhecer a Cúrcuma Pura da Empório Natural e saber valores e frete para minha cidade.' },
-  { nome: 'Magnésio Essencial', tag: 'Energia, Músculos & Descanso', corBarra: 'bg-[#15803D]', corFundoTag: 'bg-primary-light text-secondary', foco: 'Fundamental para o relaxamento muscular, funcionamento neuromuscular, produção de energia celular e combate ao esgotamento físico e mental diário.', beneficios: ['Reduz câimbras e tensões musculares', 'Melhora a disposição física', 'Contribui para um sono reparador'], ctaMsg: 'Olá! Gostaria de conhecer o Magnésio da Empório Natural e saber valores e frete para minha cidade.' },
-  { nome: 'Ômega 3 de Alta Qualidade', tag: 'Coração, Foco & Memória', corBarra: 'bg-[#0369A1]', corFundoTag: 'bg-sky-100 text-secondary', foco: 'Ácidos graxos essenciais (EPA e DHA) indispensáveis para a proteção cardiovascular, equilíbrio dos níveis saudáveis de colesterol, foco e clareza mental.', beneficios: ['Saúde do coração e circulação', 'Suporte à memória e concentração', 'Alta pureza livre de metais pesados'], ctaMsg: 'Olá! Gostaria de conhecer o Ômega 3 da Empório Natural e saber valores e frete para minha cidade.' },
-  { nome: 'Colágeno Especial', tag: 'Sustentação, Pele & Cartilagens', corBarra: 'bg-[#6D28D9]', corFundoTag: 'bg-purple-100 text-secondary', foco: 'Proteína estrutural chave para manter a firmeza e elasticidade da pele, além de fortalecer cartilagens, tendões, unhas e estrutura articular após os 35 anos.', beneficios: ['Integridade das cartilagens e juntas', 'Firmeza e elasticidade da pele', 'Reposição proteica de fácil absorção'], ctaMsg: 'Olá! Gostaria de conhecer o Colágeno da Empório Natural e saber valores e frete para minha cidade.' }
-];
-
-const diferenciaisES = [
-  { icon: 'truck' as const, title: 'Logística Próxima de Você no ES', description: 'Com sede física em Pedro Canário - ES, nossos envios para os municípios capixabas têm frete reduzido e chegam muito mais rápido que compras de marketplaces distantes.' },
-  { icon: 'shield' as const, title: 'Padrão de Pureza Natural', description: 'Trabalhamos exclusivamente com suplementos selecionados, seguros e transparentes, focados em entregar o melhor da natureza para nutrir o seu corpo.' },
-  { icon: 'whatsapp' as const, title: 'Atendimento Consultivo Humanizado', description: 'Ao contrário dos marketplaces genéricos, você fala direto com nossa equipe pelo WhatsApp para tirar dúvidas e escolher o suplemento certo para a sua necessidade.' }
-];
-
-const faqs = [
-  { pergunta: 'Esses produtos têm efeitos colaterais?', resposta: 'Não. Trabalhamos exclusivamente com suplementos alimentares 100% naturais (Cúrcuma, Magnésio, Ômega 3 e Colágeno), formulados para nutrir o organismo de forma preventiva, segura e saudável.' },
-  { pergunta: 'Como funciona o envio para o Espírito Santo?', resposta: 'Nossa empresa (Essencial Prime / Empório Natural) está sediada em Pedro Canário - ES. Por estarmos no próprio estado, conseguimos despachar rapidamente com prazos reduzidos e taxas de frete muito mais econômicas para toda a região capixaba.' },
-  { pergunta: 'Como sei qual suplemento é o ideal para o meu caso?', resposta: 'Basta clicar em qualquer botão de WhatsApp desta página. Nossa equipe de atendimento vai ouvir sua necessidade (seja alívio de desconfortos articulares, cansaço físico ou reposição 35+) e indicar a melhor opção ou kit.' },
-  { pergunta: 'Como devo consumir as cápsulas?', resposta: 'Todas as instruções de uso e recomendação diária constam de forma clara e legível nos rótulos originais de cada frasco, além do suporte direto da nossa equipe no pós-venda.' }
-];
+const toneClasses: Record<string, string> = {
+  amber: 'bg-amber-50 text-amber-900 border-amber-100',
+  emerald: 'bg-emerald-50 text-emerald-900 border-emerald-100',
+  sky: 'bg-sky-50 text-sky-900 border-sky-100',
+  violet: 'bg-violet-50 text-violet-900 border-violet-100'
+};
 ---
 
 <BaseLayout>
   <Header />
 
-  <main>
+  <main id="main-content">
     <Hero />
 
-    <section id="beneficios" class="py-16 sm:py-20 bg-surface border-y border-border">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-3xl mx-auto text-center space-y-4">
-          <span class="text-sm font-bold uppercase tracking-wider text-primary">Atenção aos sinais do corpo</span>
-          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-secondary">Você tem sentido que o ritmo da sua rotina mudou?</h2>
-          <p class="text-text-muted text-lg">O cansaço acumulado, a falta de energia e aquelas pequenas dores que atrapalham o seu dia não precisam fazer parte da sua rotina após os 35 anos.</p>
+    <section id="categorias" class="bg-surface py-16 sm:py-20" aria-labelledby="categorias-title">
+      <div class="page-shell">
+        <div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+          <div class="space-y-4">
+            <p class="section-label">Para começar sua busca</p>
+            <h2 id="categorias-title" class="section-title text-balance">Muito mais do que os produtos em destaque</h2>
+          </div>
+          <p class="max-w-2xl text-lg leading-relaxed text-text-muted lg:justify-self-end">
+            Estes são alguns dos produtos em destaque da Empório Natural. Trabalhamos com diferentes categorias e marcas. Se o produto que você procura não estiver nesta seleção, fale com nossa equipe pelo WhatsApp.
+          </p>
         </div>
 
-        <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {dores.map((item) => (
-            <article class="bg-bg rounded-xl p-6 border border-border shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
-              <div class="space-y-4">
-                <div class="w-12 h-12 rounded-lg bg-primary-light text-primary flex items-center justify-center">
-                  <Icon name={item.icon} size={24} />
-                </div>
-                <h3 class="text-xl font-bold text-secondary">{item.title}</h3>
-                <p class="text-text-muted text-base leading-relaxed">{item.description}</p>
+        <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {categories.map((category, index) => (
+            <article class={`group rounded-2xl border border-border bg-background p-5 transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-soft ${index === 0 ? 'sm:col-span-2 lg:col-span-1' : ''}`}>
+              <div class="flex items-center justify-between gap-3">
+                <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-primary-soft text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                  <Icon name={category.icon} size={22} />
+                </span>
+                <span class="text-xs font-extrabold text-text-muted">0{index + 1}</span>
               </div>
+              <h3 class="mt-5 text-xl font-bold text-text">{category.label}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-text-muted">{category.description}</p>
             </article>
           ))}
         </div>
       </div>
     </section>
 
-    <section id="suplementos" class="py-16 sm:py-24 bg-bg">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-3xl mx-auto text-center space-y-4">
-          <span class="text-sm font-bold uppercase tracking-wider text-accent">Linha Essencial Prime</span>
-          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-secondary">A suplementação certa para cada necessidade do seu corpo</h2>
-          <p class="text-text-muted text-lg">Trabalhamos exclusivamente com suplementos naturais selecionados para atuar na raiz do seu bem-estar e devolver sua vitalidade.</p>
+    <section id="destaques" class="border-y border-border bg-background py-16 sm:py-24" aria-labelledby="destaques-title">
+      <div class="page-shell">
+        <div class="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+          <div class="max-w-2xl space-y-4">
+            <p class="section-label">Uma seleção para você conhecer</p>
+            <h2 id="destaques-title" class="section-title text-balance">Alguns produtos em destaque</h2>
+            <p class="text-lg leading-relaxed text-text-muted">Consulte marcas, apresentações, preços, disponibilidade e condições de entrega para sua cidade.</p>
+          </div>
+          <a href={generalWhatsappLink()} target="_blank" rel="noopener noreferrer" class="button button--secondary shrink-0" data-cta="whatsapp-catalog" data-channel="whatsapp">
+            <Icon name="search" size={18} /> Consultar outros produtos
+          </a>
         </div>
 
-        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
-          {produtos.map((prod) => (
-            <article class="bg-surface rounded-2xl border border-border shadow-sm hover:shadow-md transition-all overflow-hidden flex flex-col justify-between">
-              <div>
-                <div class={`h-2.5 w-full ${prod.corBarra}`} />
-                <div class="p-6 sm:p-8 space-y-5">
-                  <div class="flex flex-wrap items-center justify-between gap-2">
-                    <span class={`text-xs font-bold px-3 py-1 rounded-full ${prod.corFundoTag}`}>{prod.tag}</span>
-                    <span class="text-xs font-semibold text-text-muted">Público 35+</span>
+        <div class="mt-10 grid gap-5 md:grid-cols-2">
+          {featuredProducts.map((product, index) => (
+            <article class="group overflow-hidden rounded-[1.5rem] border border-border bg-surface shadow-soft transition-all duration-200 hover:-translate-y-1 hover:shadow-card" data-product={product.name}>
+              <div class="grid sm:grid-cols-[0.78fr_1.22fr]">
+                <div class="relative min-h-64 overflow-hidden bg-slate-50 sm:min-h-full">
+                  <img src={product.image} alt={product.imageAlt} width="900" height="900" loading="lazy" decoding="async" class="h-full min-h-64 w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]" />
+                  <span class="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-extrabold text-text shadow-sm">Destaque 0{index + 1}</span>
+                </div>
+                <div class="flex flex-col justify-between gap-7 p-6 sm:p-7">
+                  <div class="space-y-4">
+                    <span class={`inline-flex rounded-full border px-3 py-1 text-xs font-extrabold ${toneClasses[product.tone]}`}>{product.label}</span>
+                    <div>
+                      <h3 class="text-2xl font-bold text-text">{product.name}</h3>
+                      <p class="mt-3 text-base leading-relaxed text-text-muted">{product.description}</p>
+                    </div>
+                    <div class="flex items-start gap-2 rounded-xl bg-background px-3 py-3 text-sm font-semibold text-text-muted">
+                      <Icon name="message" size={18} class="mt-0.5 shrink-0 text-primary" />
+                      <span>Consulte a marca, o preço e a entrega para sua cidade.</span>
+                    </div>
                   </div>
-                  <h3 class="text-2xl font-extrabold text-secondary">{prod.nome}</h3>
-                  <p class="text-text-muted text-base leading-relaxed">{prod.foco}</p>
-                  <ul class="space-y-2 pt-2 border-t border-border">
-                    {prod.beneficios.map((ben) => (
-                      <li class="flex items-center gap-2.5 text-sm font-medium text-secondary">
-                        <Icon name="check" size={18} class="text-primary shrink-0" />
-                        <span>{ben}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <a href={productWhatsappLink(product.name)} target="_blank" rel="noopener noreferrer" class="button button--primary w-full" data-cta="whatsapp-product" data-channel="whatsapp" data-product={product.name} data-category={product.name}>
+                    <Icon name="whatsapp" size={18} /> Consultar {product.name}
+                  </a>
                 </div>
-              </div>
-              <div class="px-6 sm:px-8 pb-6 sm:pb-8 pt-2">
-                <a href={createWaLink(prod.ctaMsg)} target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-white font-bold text-base px-6 min-h-[48px] rounded-xl transition-colors shadow-sm">
-                  <Icon name="whatsapp" size={20} />
-                  <span>Quero Conhecer Este Produto</span>
-                </a>
               </div>
             </article>
           ))}
         </div>
-      </div>
-    </section>
 
-    <section id="vantagem-es" class="py-16 sm:py-20 bg-surface border-y border-border">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div class="lg:col-span-5 space-y-5">
-            <div class="inline-flex items-center gap-2 bg-primary-light text-primary px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
-              <Icon name="map-pin" size={16} />
-              <span>De Pedro Canário para todo o ES</span>
-            </div>
-            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-secondary">Por que escolher a Empório Natural no Espírito Santo?</h2>
-            <p class="text-text-muted text-lg leading-relaxed">Ao comprar em marketplaces genéricos, você enfrenta fretes caros, demora na entrega e falta de orientação. Nós unimos suplementos de altíssima pureza com uma operação local capixaba.</p>
-            <div class="pt-2">
-              <a href={createWaLink("Olá! Moro no Espírito Santo e quero consultar o frete e condições dos suplementos.")} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-secondary hover:bg-secondary/90 text-white font-bold px-6 min-h-[50px] rounded-full transition-colors">
-                <Icon name="truck" size={20} class="text-accent-light" />
-                <span>Consultar Entrega para Minha Cidade</span>
-              </a>
-            </div>
+        <div class="mt-7 flex flex-col gap-4 rounded-2xl border border-primary/20 bg-primary-soft p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+          <div class="flex items-start gap-3">
+            <Icon name="layers" size={22} class="mt-0.5 shrink-0 text-primary" />
+            <p class="text-sm font-bold leading-relaxed text-primary-deep">Não encontrou o que procura? Estes quatro itens são só o começo. A equipe pode consultar outras categorias e marcas.</p>
           </div>
-          <div class="lg:col-span-7 grid grid-cols-1 gap-6">
-            {diferenciaisES.map((dif) => (
-              <div class="bg-bg p-6 rounded-xl border border-border flex flex-col sm:flex-row items-start gap-4">
-                <div class="w-12 h-12 rounded-xl bg-primary text-white flex items-center justify-center shrink-0">
-                  <Icon name={dif.icon} size={24} />
-                </div>
-                <div class="space-y-1.5">
-                  <h3 class="text-xl font-bold text-secondary">{dif.title}</h3>
-                  <p class="text-text-muted text-base leading-relaxed">{dif.description}</p>
-                </div>
-              </div>
-            ))}
+          <a href={generalWhatsappLink()} target="_blank" rel="noopener noreferrer" class="button button--dark shrink-0" data-cta="whatsapp-more-products" data-channel="whatsapp">Ver outras opções</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="entrega" class="relative overflow-hidden bg-dark py-16 text-white sm:py-24" aria-labelledby="entrega-title">
+      <div class="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-primary/30 blur-3xl" aria-hidden="true"></div>
+      <div class="absolute -bottom-24 -left-20 h-64 w-64 rounded-full bg-accent/15 blur-3xl" aria-hidden="true"></div>
+      <div class="page-shell relative grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-16">
+        <div class="space-y-6">
+          <p class="eyebrow text-accent"><Icon name="truck" size={16} /> Logística sem promessa exagerada</p>
+          <h2 id="entrega-title" class="text-balance text-3xl font-bold sm:text-4xl lg:text-5xl">Consulte a melhor condição de entrega para sua cidade</h2>
+          <p class="max-w-xl text-lg leading-relaxed text-white/72">Nosso foco inicial é atender clientes do Espírito Santo com agilidade e condições competitivas de frete. Envie sua cidade ou CEP pelo WhatsApp para consultar a disponibilidade do produto, o prazo e o valor da entrega.</p>
+          <p class="text-sm font-semibold leading-relaxed text-white/55">Atendimento local a partir de {business.city}/{business.state}. Outras regiões do Brasil podem ser avaliadas conforme produto, disponibilidade, modalidade e cotação.</p>
+          <a href={deliveryWhatsappLink()} target="_blank" rel="noopener noreferrer" class="button bg-accent text-dark shadow-lg hover:bg-amber-300" data-cta="whatsapp-delivery" data-channel="whatsapp">
+            <Icon name="map-pin" size={19} /> Consultar minha entrega
+          </a>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm sm:p-6">
+            <div class="flex items-center gap-3"><span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-white"><Icon name="map-pin" size={20} /></span><h3 class="text-lg font-bold">No Espírito Santo</h3></div>
+            <p class="mt-3 text-sm leading-relaxed text-white/65">Consulte as condições por cidade e rota, sem receber uma promessa genérica para todo o estado.</p>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm sm:p-6">
+            <div class="flex items-center gap-3"><span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-white"><Icon name="package" size={20} /></span><h3 class="text-lg font-bold">No mesmo pedido</h3></div>
+            <p class="mt-3 text-sm leading-relaxed text-white/65">Combine produtos e consulte a condição para o pedido completo. Peso e quantidade podem alterar o frete.</p>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm sm:p-6">
+            <div class="flex items-center gap-3"><span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-white"><Icon name="message" size={20} /></span><h3 class="text-lg font-bold">Outras regiões</h3></div>
+            <p class="mt-3 text-sm leading-relaxed text-white/65">Avaliamos envios para outras regiões do Brasil conforme produto, disponibilidade e cotação.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="py-16 sm:py-20 bg-bg">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-3xl mx-auto text-center space-y-3">
-          <span class="text-sm font-bold uppercase tracking-wider text-primary">Bem-estar comprovado na rotina</span>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-secondary">Quem cuida da saúde com a gente sente a diferença</h2>
+    <section id="como-comprar" class="bg-surface py-16 sm:py-20" aria-labelledby="como-comprar-title">
+      <div class="page-shell">
+        <div class="mx-auto max-w-2xl space-y-4 text-center">
+          <p class="section-label">Atendimento direto</p>
+          <h2 id="como-comprar-title" class="section-title mx-auto text-balance">Comprar é simples</h2>
+          <p class="text-lg leading-relaxed text-text-muted">Você não precisa descobrir sozinho qual opção está disponível ou qual frete se aplica ao seu CEP.</p>
         </div>
-        <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          <blockquote class="bg-surface p-6 sm:p-8 rounded-2xl border border-border shadow-sm flex flex-col justify-between space-y-4">
-            <div class="flex items-center gap-1 text-accent" aria-label="Avaliação 5 de 5 estrelas">
-              <Icon name="star" size={18} /><Icon name="star" size={18} /><Icon name="star" size={18} /><Icon name="star" size={18} /><Icon name="star" size={18} />
-            </div>
-            <p class="text-secondary text-base italic leading-relaxed">“Depois dos 35, comecei a sentir muitas dores nos joelhos ao caminhar. A cúrcuma mudou minha rotina, voltei a ter disposição no dia a dia de forma natural!”</p>
-            <footer class="text-sm font-bold text-text-muted border-t border-border pt-3">Carla M., 41 anos — Cliente no Espírito Santo</footer>
-          </blockquote>
-          <blockquote class="bg-surface p-6 sm:p-8 rounded-2xl border border-border shadow-sm flex flex-col justify-between space-y-4">
-            <div class="flex items-center gap-1 text-accent" aria-label="Avaliação 5 de 5 estrelas">
-              <Icon name="star" size={18} /><Icon name="star" size={18} /><Icon name="star" size={18} /><Icon name="star" size={18} /><Icon name="star" size={18} />
-            </div>
-            <p class="text-secondary text-base italic leading-relaxed">“O atendimento pelo WhatsApp é excelente e o pedido chegou super rápido aqui no Espírito Santo. O magnésio ajudou demais naquele cansaço físico que eu sentia todas as tardes.”</p>
-            <footer class="text-sm font-bold text-text-muted border-t border-border pt-3">Marcos S., 45 anos — Cliente no Espírito Santo</footer>
-          </blockquote>
+        <div class="relative mt-12 grid gap-5 md:grid-cols-4">
+          {[
+            { number: '01', title: 'Escolha', text: 'Selecione um destaque ou informe a categoria que procura.', icon: 'search' as const },
+            { number: '02', title: 'Envie', text: 'Mande sua cidade ou CEP pelo WhatsApp.', icon: 'message' as const },
+            { number: '03', title: 'Consulte', text: 'Receba preço, disponibilidade, prazo, frete e pagamento.', icon: 'check' as const },
+            { number: '04', title: 'Confirme', text: 'Finalize o pedido com a equipe de atendimento.', icon: 'package' as const }
+          ].map((step) => (
+            <article class="relative rounded-2xl border border-border bg-background p-5 shadow-soft">
+              <div class="flex items-center justify-between"><span class="flex h-11 w-11 items-center justify-center rounded-xl bg-primary text-white"><Icon name={step.icon} size={20} /></span><span class="font-display text-3xl font-bold text-primary/20">{step.number}</span></div>
+              <h3 class="mt-5 text-xl font-bold text-text">{step.title}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-text-muted">{step.text}</p>
+            </article>
+          ))}
         </div>
+        <div class="mt-8 text-center"><a href={generalWhatsappLink()} target="_blank" rel="noopener noreferrer" class="button button--primary" data-cta="whatsapp-how-to-buy" data-channel="whatsapp"><Icon name="whatsapp" size={18} /> Falar com a equipe agora</a></div>
       </div>
     </section>
 
-    <section id="faq" class="py-16 sm:py-20 bg-surface border-t border-border">
-      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center space-y-3 mb-10">
-          <span class="text-sm font-bold uppercase tracking-wider text-primary">Tire suas dúvidas</span>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-secondary">Perguntas Frequentes</h2>
-        </div>
+    <section id="instagram" class="border-y border-border bg-accent-soft py-16 sm:py-20" aria-labelledby="instagram-title">
+      <div class="page-shell grid items-center gap-8 lg:grid-cols-[1fr_auto]">
         <div class="space-y-4">
-          {faqs.map((item) => (
-            <details class="group bg-bg rounded-xl border border-border overflow-hidden">
-              <summary class="flex items-center justify-between gap-4 p-5 sm:p-6 font-display font-bold text-lg text-secondary cursor-pointer select-none hover:bg-border/30 transition-colors min-h-[56px]">
-                <span>{item.pergunta}</span>
-                <Icon name="chevron" size={20} class="text-primary shrink-0 transition-transform duration-200 group-open:rotate-180" />
+          <p class="section-label text-accent-deep"><Icon name="instagram" size={16} /> Referência e novidades</p>
+          <h2 id="instagram-title" class="section-title text-balance">Veja novidades e produtos no Instagram</h2>
+          <p class="max-w-2xl text-lg leading-relaxed text-text-muted">Acompanhe novidades, produtos, marcas, bastidores e referências da Empório Natural pelo Instagram.</p>
+          <p class="font-display text-xl font-bold text-text">{business.instagramHandle}</p>
+        </div>
+        <div class="flex flex-col gap-3 sm:flex-row lg:flex-col">
+          <a href={business.instagramUrl} target="_blank" rel="noopener noreferrer" class="button button--dark" data-cta="instagram-section" data-channel="instagram"><Icon name="instagram" size={19} /> Ver Instagram oficial</a>
+          <a href={generalWhatsappLink()} target="_blank" rel="noopener noreferrer" class="button button--secondary border-accent/40" data-cta="whatsapp-instagram-section" data-channel="whatsapp"><Icon name="whatsapp" size={19} /> Comprar pelo WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="duvidas" class="bg-background py-16 sm:py-24" aria-labelledby="duvidas-title">
+      <div class="page-shell grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+        <div class="space-y-4 lg:sticky lg:top-28">
+          <p class="section-label">Antes de pedir</p>
+          <h2 id="duvidas-title" class="section-title text-balance">Perguntas frequentes</h2>
+          <p class="text-lg leading-relaxed text-text-muted">A compra acontece com atendimento humano. Se a sua dúvida não estiver aqui, fale com a equipe.</p>
+          <a href={generalWhatsappLink()} target="_blank" rel="noopener noreferrer" class="button button--primary" data-cta="whatsapp-faq" data-channel="whatsapp"><Icon name="message" size={18} /> Tirar dúvida no WhatsApp</a>
+        </div>
+        <div class="space-y-3">
+          {faqs.map((faq) => (
+            <details class="group rounded-2xl border border-border bg-surface shadow-soft">
+              <summary class="flex min-h-16 cursor-pointer list-none items-center justify-between gap-5 px-5 py-4 font-display text-base font-bold text-text sm:px-6 sm:text-lg">
+                <span>{faq.question}</span>
+                <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary-soft text-primary transition-transform duration-200 group-open:rotate-180"><Icon name="chevron" size={18} /></span>
               </summary>
-              <div class="px-5 sm:px-6 pb-6 pt-1 text-text-muted text-base leading-relaxed border-t border-border/60">
-                {item.resposta}
-              </div>
+              <div class="border-t border-border px-5 pb-5 pt-4 text-base leading-relaxed text-text-muted sm:px-6">{faq.answer}</div>
             </details>
           ))}
         </div>

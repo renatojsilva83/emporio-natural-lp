@@ -3,7 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   output: 'static',
-  site: 'https://emporionaturales.com.br',
+  site: 'https://emporio-natural-lp.pages.dev',
   compressHTML: true,
   vite: {
     plugins: [tailwindcss()]

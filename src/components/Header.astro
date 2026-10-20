@@ -1,77 +1,91 @@
 ---
 import Icon from './Icon.astro';
-
-const whatsappUrl = "https://wa.me/5527998688293?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Emp%C3%B3rio%20Natural%20e%20gostaria%20de%20orienta%C3%A7%C3%A3o%20sobre%20os%20suplementos.";
+import { business, generalWhatsappLink } from '../data/business';
 ---
-<header class="sticky top-0 z-50 bg-surface/95 backdrop-blur-md border-b border-border shadow-sm">
-  <div class="bg-secondary text-white text-sm py-2 px-4">
-    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-center sm:justify-between gap-2 text-center">
-      <p class="flex items-center justify-center gap-2 font-medium">
-        <Icon name="truck" size={18} class="text-accent-light shrink-0" />
-        <span>Frete Rápido e Condições Especiais para todo o <strong>Espírito Santo</strong>!</span>
+<header class="sticky top-0 z-50 border-b border-border/80 bg-surface/95 backdrop-blur-md">
+  <div class="bg-dark text-white">
+    <div class="page-shell flex min-h-9 items-center justify-between gap-3 py-2 text-xs sm:text-sm">
+      <p class="flex items-center gap-2 font-semibold">
+        <Icon name="truck" size={16} class="text-accent" />
+        <span>Condições especiais de entrega no Espírito Santo</span>
       </p>
-      <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-1.5 text-accent-light hover:underline font-semibold">
-        <span>Dúvidas? Fale com um especialista: (27) 99868-8293</span>
+      <a
+        href={generalWhatsappLink()}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hidden items-center gap-2 font-bold text-accent transition-colors hover:text-white sm:inline-flex"
+        data-cta="whatsapp-topbar"
+        data-channel="whatsapp"
+      >
+        Consultar pelo WhatsApp
+        <Icon name="chevron" size={14} class="-rotate-90" />
       </a>
     </div>
   </div>
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-    <a href="#" class="flex items-center gap-3 group focus:outline-none">
-      <div class="w-11 h-11 rounded-lg bg-primary flex items-center justify-center text-white font-display font-bold text-xl shadow-sm group-hover:bg-primary-hover transition-colors">
+  <div class="page-shell flex min-h-[4.75rem] items-center justify-between gap-4 py-3">
+    <a href="#inicio" class="group flex min-w-0 items-center gap-3" aria-label="Empório Natural — início">
+      <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-primary text-lg font-bold text-white shadow-soft transition-transform group-hover:-rotate-3">
         EN
-      </div>
-      <div>
-        <span class="block font-display font-bold text-lg text-secondary leading-none">Empório Natural</span>
-        <span class="block text-xs text-text-muted font-medium mt-1">Essencial Prime • Saúde 35+</span>
-      </div>
+      </span>
+      <span class="min-w-0">
+        <span class="block truncate font-display text-lg font-bold leading-tight text-text">Empório Natural</span>
+        <span class="block text-xs font-semibold text-text-muted">Produtos naturais e suplementos</span>
+      </span>
     </a>
 
-    <nav aria-label="Navegação Principal" class="hidden md:flex items-center gap-8 text-base font-medium text-text-muted">
-      <a href="#beneficios" class="hover:text-primary transition-colors py-2">Por que 35+?</a>
-      <a href="#suplementos" class="hover:text-primary transition-colors py-2">Suplementos</a>
-      <a href="#vantagem-es" class="hover:text-primary transition-colors py-2">Entrega no ES</a>
-      <a href="#faq" class="hover:text-primary transition-colors py-2">Dúvidas</a>
-    </nav>
-
-    <div class="hidden md:flex items-center">
+    <nav aria-label="Navegação principal" class="hidden items-center gap-7 text-sm font-bold text-text-muted lg:flex">
+      <a href="#categorias" class="transition-colors hover:text-primary">Categorias</a>
+      <a href="#destaques" class="transition-colors hover:text-primary">Destaques</a>
+      <a href="#entrega" class="transition-colors hover:text-primary">Entrega</a>
+      <a href="#como-comprar" class="transition-colors hover:text-primary">Como comprar</a>
+      <a href="#duvidas" class="transition-colors hover:text-primary">Dúvidas</a>
       <a
-        href={whatsappUrl}
+        href={business.instagramUrl}
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-white font-semibold px-5 min-h-[48px] rounded-full shadow-sm transition-colors"
+        class="inline-flex min-h-11 items-center gap-2 rounded-full px-3 text-primary transition-colors hover:bg-primary-soft"
+        data-cta="instagram-header"
+        data-channel="instagram"
       >
-        <Icon name="whatsapp" size={20} />
-        <span>Atendimento WhatsApp</span>
+        <Icon name="instagram" size={18} />
+        <span>Instagram</span>
+      </a>
+    </nav>
+
+    <div class="hidden items-center gap-2 lg:flex">
+      <a
+        href={generalWhatsappLink()}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="button button--primary whitespace-nowrap"
+        data-cta="whatsapp-header"
+        data-channel="whatsapp"
+      >
+        <Icon name="whatsapp" size={18} />
+        <span>Comprar pelo WhatsApp</span>
       </a>
     </div>
 
-    <details class="md:hidden relative group">
-      <summary
-        aria-label="Abrir menu de navegação"
-        class="list-none flex items-center justify-center w-12 h-12 rounded-md border border-border text-secondary hover:bg-bg cursor-pointer"
-      >
-        <Icon name="menu" size={24} />
+    <details class="relative lg:hidden">
+      <summary class="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-xl border border-border text-text transition-colors hover:bg-primary-soft" aria-label="Abrir menu">
+        <Icon name="menu" size={22} />
       </summary>
-      <nav
-        aria-label="Navegação Mobile"
-        class="absolute right-0 mt-3 w-72 bg-surface rounded-lg shadow-lg border border-border p-4 flex flex-col gap-2"
-      >
-        <a href="#beneficios" class="px-4 py-3 rounded-md font-medium text-secondary hover:bg-primary-light/50">Por que suplementar 35+?</a>
-        <a href="#suplementos" class="px-4 py-3 rounded-md font-medium text-secondary hover:bg-primary-light/50">Nossos Suplementos</a>
-        <a href="#vantagem-es" class="px-4 py-3 rounded-md font-medium text-secondary hover:bg-primary-light/50">Envio Rápido no ES</a>
-        <a href="#faq" class="px-4 py-3 rounded-md font-medium text-secondary hover:bg-primary-light/50">Dúvidas Frequentes</a>
-        <hr class="border-border my-1" />
-        <a
-          href={whatsappUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex items-center justify-center gap-2 bg-primary text-white font-semibold px-4 min-h-[48px] rounded-md text-center"
-        >
-          <Icon name="whatsapp" size={20} />
-          <span>Falar no WhatsApp</span>
-        </a>
-      </nav>
+      <div class="absolute right-0 top-14 w-[min(19rem,calc(100vw-2rem))] rounded-2xl border border-border bg-surface p-3 shadow-card">
+        <nav aria-label="Navegação mobile" class="grid gap-1 text-sm font-bold text-text">
+          <a href="#categorias" class="rounded-xl px-4 py-3 hover:bg-primary-soft">Categorias</a>
+          <a href="#destaques" class="rounded-xl px-4 py-3 hover:bg-primary-soft">Produtos em destaque</a>
+          <a href="#entrega" class="rounded-xl px-4 py-3 hover:bg-primary-soft">Entrega</a>
+          <a href="#como-comprar" class="rounded-xl px-4 py-3 hover:bg-primary-soft">Como comprar</a>
+          <a href="#duvidas" class="rounded-xl px-4 py-3 hover:bg-primary-soft">Dúvidas</a>
+          <a href={business.instagramUrl} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 rounded-xl px-4 py-3 text-primary hover:bg-primary-soft" data-cta="instagram-mobile" data-channel="instagram">
+            <Icon name="instagram" size={18} /> Instagram oficial
+          </a>
+          <a href={generalWhatsappLink()} target="_blank" rel="noopener noreferrer" class="button button--primary mt-2" data-cta="whatsapp-mobile" data-channel="whatsapp">
+            <Icon name="whatsapp" size={18} /> Falar com a equipe
+          </a>
+        </nav>
+      </div>
     </details>
   </div>
 </header>

@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import { business } from '../data/business';
+import { faqs } from '../data/catalog';
 
 interface Props {
   title?: string;
@@ -7,37 +9,72 @@ interface Props {
 }
 
 const {
-  title = "Empório Natural | Suplementos Puros e Saúde 35+ no ES",
-  description = "Suplementos 100% naturais para o público 35+ no Espírito Santo. Alivie dores e recupere a energia com Cúrcuma, Magnésio, Ômega 3 e Colágeno. Frete rápido!"
+  title = 'Suplementos e produtos naturais no Espírito Santo | Empório Natural',
+  description = 'Encontre suplementos e produtos naturais de várias marcas. Consulte disponibilidade, preço, prazo e condições de entrega no Espírito Santo pelo WhatsApp.'
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const canonicalURL = new URL(Astro.url.pathname, business.canonicalUrl).toString();
+const ogImageURL = `${business.canonicalUrl}${business.ogImagePath}`;
 
-const schemaOrg = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Empório Natural - Essencial Prime",
-  "legalName": "COMERCIO ESSENCIAL LTDA",
-  "taxID": "19.682.853/0001-26",
-  "description": description,
-  "url": canonicalURL.toString(),
-  "telephone": "+55-27-99868-8293",
-  "email": "essencialprimeadm@gmail.com",
-  "priceRange": "$$",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Av. Dr. Mário Vello Silvares, 63, Centro",
-    "addressLocality": "Pedro Canário",
-    "addressRegion": "ES",
-    "postalCode": "29970-000",
-    "addressCountry": "BR"
+const organization = {
+  '@type': 'OnlineStore',
+  '@id': `${business.canonicalUrl}#organization`,
+  name: business.name,
+  legalName: business.legalName,
+  url: business.canonicalUrl,
+  description: 'Loja multimarcas de suplementos e produtos naturais, com foco de atendimento no Espírito Santo e possibilidade de envio para outras regiões.',
+  telephone: `+${business.whatsappNumber}`,
+  email: business.publicEmail,
+  taxID: business.cnpj,
+  sameAs: [business.instagramUrl],
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: business.streetAddress,
+    addressLocality: business.city,
+    addressRegion: business.state,
+    postalCode: business.postalCode,
+    addressCountry: business.country
   },
-  "areaServed": {
-    "@type": "State",
-    "name": "Espírito Santo"
-  },
-  "sameAs": [
-    "https://www.instagram.com/emporionatural_oficial"
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: `+${business.whatsappNumber}`,
+    email: business.publicEmail,
+    contactType: 'customer service',
+    availableLanguage: 'pt-BR'
+  }
+};
+
+const schemaGraph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    organization,
+    {
+      '@type': 'WebSite',
+      '@id': `${business.canonicalUrl}#website`,
+      url: business.canonicalUrl,
+      name: business.name,
+      inLanguage: 'pt-BR',
+      publisher: { '@id': `${business.canonicalUrl}#organization` }
+    },
+    {
+      '@type': 'WebPage',
+      '@id': `${canonicalURL}#webpage`,
+      url: canonicalURL,
+      name: title,
+      description,
+      isPartOf: { '@id': `${business.canonicalUrl}#website` },
+      about: { '@id': `${business.canonicalUrl}#organization` },
+      inLanguage: 'pt-BR'
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `${canonicalURL}#faq`,
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: { '@type': 'Answer', text: faq.answer }
+      }))
+    }
   ]
 };
 ---
@@ -45,32 +82,37 @@ const schemaOrg = {
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#047857" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <link rel="canonical" href={canonicalURL} />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23047857'/%3E%3Ctext x='32' y='41' font-family='Arial' font-size='25' font-weight='700' text-anchor='middle' fill='white'%3EEN%3C/text%3E%3C/svg%3E" />
 
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
-    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content="Empório Natural" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:site_name" content="Empório Natural ES" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:alt" content="Destaque de ômega 3 da Empório Natural" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+    <meta name="twitter:image:alt" content="Destaque de ômega 3 da Empório Natural" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap"
-      rel="stylesheet"
-    />
-
-    <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <script type="application/ld+json" set:html={JSON.stringify(schemaGraph)} />
   </head>
-  <body class="min-h-screen flex flex-col antialiased selection:bg-primary selection:text-white">
+  <body>
+    <a class="skip-link" href="#main-content">Ir para o conteúdo principal</a>
     <slot />
   </body>
 </html>
